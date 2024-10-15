@@ -1,87 +1,64 @@
-body, html {
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #2b2b2b;
+body {
+    background-color: #282c34; /* Color de fondo */
+    color: white; /* Color de texto */
+    font-family: Arial, sans-serif; /* Tipo de fuente */
+    margin: 0; /* Sin márgenes */
+    display: flex; /* Usar flexbox para centrar contenido */
+    flex-direction: column; /* Dirección de columna */
+    align-items: center; /* Alinear elementos al centro */
 }
 
 #game-container {
-    position: relative;
-    width: 100vw;
-    height: 100vh;
-    background: linear-gradient(#555, #222);
-    background-image: url('https://c4.wallpaperflare.com/wallpaper/706/837/179/the-city-future-the-moon-skyscrapers-pixels-hd-wallpaper-preview.jpg'); 
-    background-size: cover;
+    position: relative; /* Posición relativa para el contenedor del juego */
+    width: 80vw; /* Ancho del contenedor del juego */
+    height: 80vh; /* Altura del contenedor del juego */
+    border: 2px solid #fff; /* Bordes del contenedor */
+    overflow: hidden; /* Ocultar elementos que se salen del contenedor */
 }
 
 #player {
-    position: absolute;
-    bottom: 10%;
-    left: 5%;
-    width: 50px;
-    height: 80px;
-    background-image: url('https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/a67ac30c-fe21-4e97-8dad-ffa8b2670167/dbp6qj1-eaae0ccf-b87c-4509-895a-995cd53bafbe.gif?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2E2N2FjMzBjLWZlMjEtNGU5Ny04ZGFkLWZmYThiMjY3MDE2N1wvZGJwNnFqMS1lYWFlMGNjZi1iODdjLTQ1MDktODk1YS05OTVjZDUzYmFmYmUuZ2lmIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.L9jOG8x4e3R0TEsYb11Vv8LBB_hUinUhpnm7o3-XGGc'); /* Imagen del personaje */
-    background-size: cover;
+    position: absolute; /* Posición absoluta para el jugador */
+    width: 50px; /* Ancho del jugador */
+    height: 50px; /* Altura del jugador */
+    background-color: #ffcc00; /* Color del jugador */
 }
 
 .enemy {
-  width: 50px;
-  height: 50px;
-  position: absolute;
-  background-image: url('https://media.tenor.com/f61Fpec7INoAAAAi/mecha-anime.gif'); 
-  background-size: cover;
-     
+    position: absolute; /* Posición absoluta para los enemigos */
+    width: 30px; /* Ancho del enemigo */
+    height: 30px; /* Altura del enemigo */
+    background-color: red; /* Color del enemigo */
 }
 
-#score {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    color: #fff;
-    font-size: 20px;
+#score, #lives {
+    position: absolute; /* Posición absoluta para puntaje y vidas */
+    top: 10px; /* Distancia desde la parte superior */
+    left: 10px; /* Distancia desde la izquierda */
+    font-size: 20px; /* Tamaño de fuente */
 }
 
 #game-over {
-    display: none;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    color: #fff;
-    background-color: rgba(0, 0, 0, 0.8);
-    padding: 20px;
-    border-radius: 10px;
+    display: none; /* Ocultar por defecto la pantalla de Game Over */
+    position: absolute; /* Posición absoluta para la pantalla de Game Over */
+    top: 50%; /* Centrar verticalmente */
+    left: 50%; /* Centrar horizontalmente */
+    transform: translate(-50%, -50%); /* Mover a la mitad del ancho y altura */
+    text-align: center; /* Centrar el texto */
+    background-color: rgba(0, 0, 0, 0.7); /* Fondo oscuro semi-transparente */
+    padding: 20px; /* Espaciado interior */
+    border-radius: 10px; /* Bordes redondeados */
 }
 
-#game-over h1 {
-    margin: 0;
-    font-size: 48px;
+button {
+    margin-top: 20px; /* Margen superior para el botón */
+    padding: 10px 20px; /* Espaciado interior del botón */
+    font-size: 16px; /* Tamaño de fuente del botón */
+    background-color: #ffcc00; /* Color de fondo del botón */
+    border: none; /* Sin bordes */
+    border-radius: 5px; /* Bordes redondeados del botón */
+    cursor: pointer; /* Cambiar el cursor al pasar sobre el botón */
 }
 
-#game-over button {
-    margin-top: 20px;
-    padding: 10px 20px;
-    font-size: 20px;
-    cursor: pointer;
-}
-
-#start-game {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: #008CBA; 
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    font-size: 20px;
-    cursor: pointer;
-    border-radius: 5px;
-}
-
-#start-game:hover {
-    background-color: #005f6b; 
+button:hover {
+    background-color: #e6b800; /* Cambiar el color de fondo del botón al pasar el cursor */
 }
