@@ -5,6 +5,13 @@ let gameOverScreen = document.getElementById('game-over'); // Pantalla de Game O
 let restartButton = document.getElementById('restart'); // Botón para reiniciar el juego
 let startButton = document.getElementById('start-game'); // Botón para iniciar el juego
 
+
+let gameContainer = document.getElementById('game-container');
+let containerHeight = gameContainer.clientHeight;
+enemy.style.top = `${Math.random() * (containerHeight - 80)}px`;
+
+
+
 // Variables del juego
 let score = 0; // Puntaje inicial
 let playerSpeed = 10; // Velocidad del jugador
