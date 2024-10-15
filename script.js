@@ -9,7 +9,7 @@ let startButton = document.getElementById('start-game'); // Botón para iniciar 
 // Variables del juego
 let score = 0; // Puntaje inicial
 let playerSpeed = 10; // Velocidad del jugador
-let enemySpeed = 5; // Velocidad inicial de los enemigos
+let enemySpeed = 3; // Velocidad inicial de los enemigos
 let enemies = []; // Arreglo para almacenar los enemigos
 let gameOver = false; // Bandera para indicar si el juego ha terminado
 let spawnInterval = 2000; // Intervalo inicial para la aparición de enemigos (en milisegundos)
