@@ -98,8 +98,8 @@ function updateScore() {
 function spawnEnemy() {
     let enemy = document.createElement('div'); // Crea un nuevo elemento de enemigo
     enemy.className = 'enemy'; // Asigna la clase de estilo al enemigo
-    enemy.style.top = ${Math.random() * (window.innerHeight - 80)}px; // Posición vertical aleatoria
-    enemy.style.left = ${window.innerWidth}px; // Posición horizontal inicial (fuera de la pantalla)
+    enemy.style.top = `${Math.random() * (window.innerHeight - 80)}px`; // Posición vertical aleatoria
+    enemy.style.left = `${window.innerWidth}px`; // Posición horizontal inicial (fuera de la pantalla)
     document.getElementById('game-container').appendChild(enemy); // Agrega el enemigo al contenedor del juego
 
     enemies.push(enemy); // Agrega el enemigo al arreglo de enemigos
