@@ -1,14 +1,12 @@
-// Referencias a elementos del DOM
 let player = document.getElementById('player'); // Elemento del jugador  
 let scoreDisplay = document.getElementById('score'); // Elemento que muestra el puntaje
-let livesDisplay = document.getElementById('lives'); // Elemento que muestra las vidas
 let gameOverScreen = document.getElementById('game-over'); // Pantalla de Game Over
 let restartButton = document.getElementById('restart'); // Botón para reiniciar el juego
 let startButton = document.getElementById('start-game'); // Botón para iniciar el juego
 
+
 // Variables del juego
 let score = 0; // Puntaje inicial
-let lives = 3; // Vidas iniciales
 let playerSpeed = 10; // Velocidad del jugador
 let enemySpeed = 3; // Velocidad inicial de los enemigos
 let enemies = []; // Arreglo para almacenar los enemigos
@@ -87,32 +85,21 @@ function checkCollision() {
             enemies.splice(index, 1); // Elimina el enemigo del arreglo
             score += 10; // Incrementa el puntaje
             updateScore(); // Actualiza la visualización del puntaje
-
-            // Verifica si se debe agregar una vida
-            if (score % 1000 === 0) {
-                lives++;
-                updateLives(); // Actualiza la visualización de vidas
-            }
         }
     });
 }
 
 // Función para actualizar el puntaje en la pantalla
 function updateScore() {
-    scoreDisplay.textContent = `Puntos: ${score}`;
-}
-
-// Función para actualizar las vidas en la pantalla
-function updateLives() {
-    livesDisplay.textContent = `Vidas: ${lives}`;
+    scoreDisplay.textContent = Puntos: ${score};
 }
 
 // Función para generar un nuevo enemigo
 function spawnEnemy() {
     let enemy = document.createElement('div'); // Crea un nuevo elemento de enemigo
     enemy.className = 'enemy'; // Asigna la clase de estilo al enemigo
-    enemy.style.top = `${Math.random() * (window.innerHeight - 80)}px`; // Posición vertical aleatoria
-    enemy.style.left = `${window.innerWidth}px`; // Posición horizontal inicial (fuera de la pantalla)
+    enemy.style.top = ${Math.random() * (window.innerHeight - 80)}px; // Posición vertical aleatoria
+    enemy.style.left = ${window.innerWidth}px; // Posición horizontal inicial (fuera de la pantalla)
     document.getElementById('game-container').appendChild(enemy); // Agrega el enemigo al contenedor del juego
 
     enemies.push(enemy); // Agrega el enemigo al arreglo de enemigos
@@ -129,16 +116,9 @@ function moveEnemy(enemy) {
 
         let enemyPosition = enemy.offsetLeft; // Posición horizontal del enemigo
         if (enemyPosition < -50) {
-            // Si el enemigo sale de la pantalla, el jugador pierde una vida
+            // Si el enemigo sale de la pantalla, el jugador pierde
             clearInterval(enemyInterval); // Detiene el intervalo de movimiento del enemigo
-            lives--; // Disminuye la vida del jugador
-            updateLives(); // Actualiza la visualización de vidas
-
-            if (lives <= 0) {
-                triggerGameOver(); // Llama a la función de fin de juego si no quedan vidas
-            }
-
-            enemy.remove(); // Elimina el enemigo que salió de la pantalla
+            triggerGameOver(); // Llama a la función de fin de juego
         } else {
             enemy.style.left = enemyPosition - enemySpeed + 'px'; // Mueve el enemigo a la izquierda
         }
@@ -159,35 +139,43 @@ function triggerGameOver() {
 // Función para reiniciar el juego
 function restartGame() {
     score = 0; // Restablece el puntaje
-    lives = 3; // Restablece las vidas
     updateScore(); // Actualiza la visualización del puntaje
-    updateLives(); // Actualiza la visualización de vidas
     gameOver = false; // Restablece la bandera de fin de juego
     gameOverScreen.style.display = 'none'; // Oculta la pantalla de Game Over
     document.querySelectorAll('.enemy').forEach(e => e.remove()); // Elimina todos los enemigos de la pantalla
     enemies = []; // Restablece el arreglo de enemigos
     enemySpeed = 2; // Restablece la velocidad inicial de los enemigos
     spawnInterval = 2000; // Restablece el intervalo de aparición de enemigos
-    startSpawningEnemies(); // Vuelve a iniciar la aparición de enemigos
+    backgroundMusic.play().catch(error => {
+        console.error('Error al reproducir la música: ', error);
+    }); // Reanuda la música si fue pausada
+    startSpawningEnemies(); // Reinicia la generación de enemigos
 }
 
-// Función para iniciar la aparición de enemigos
+// Función para comenzar a generar enemigos
 function startSpawningEnemies() {
+    // Intervalo para generar enemigos
+    let spawnEnemyInterval = setInterval(() => {
+        if (gameOver) {
+            clearInterval(spawnEnemyInterval); // Detiene la generación de enemigos si el juego ha terminado
+            return;
+        }
+
+        spawnEnemy(); // Genera un nuevo enemigo
+    }, spawnInterval);
+
+    // Incrementa la velocidad de los enemigos a intervalos regulares
     setInterval(() => {
         if (!gameOver) {
-            spawnEnemy(); // Llama a la función para generar un nuevo enemigo
+            enemySpeed += speedIncreaseRate; // Aumenta la velocidad de los enemigos
         }
-    }, spawnInterval); // Intervalo de tiempo para generar enemigos
+    }, speedIncreaseInterval);
 }
 
-// Función para aumentar la velocidad de los enemigos
-function increaseEnemySpeed() {
-    enemySpeed += speedIncreaseRate; // Aumenta la velocidad de los enemigos
-}
-
-// Configura el reinicio del juego al presionar el botón
+// Añade un escuchador de eventos al botón de reinicio
 restartButton.addEventListener('click', restartGame);
-startButton.addEventListener('click', startGame);
 
-// Aumenta la velocidad de los enemigos a intervalos regulares
-setInterval(increaseEnemySpeed, speedIncreaseInterval); // Aumenta la velocidad cada 60 segundos
+// Añade un escuchador de eventos al botón de inicio
+startButton.addEventListener('click', () => {
+    startGame(); // Inicia el juego cuando se hace clic en el botón de inicio
+}); 
