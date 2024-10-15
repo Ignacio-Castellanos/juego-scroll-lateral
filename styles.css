@@ -6,13 +6,14 @@ body, html {
 }
 
 #game-container {
+    width: 100%;
+    height: 100%;
     position: relative;
-    width: 100vw;
-    height: 100vh;
     background: linear-gradient(#555, #222);
-    background-image: url('https://c4.wallpaperflare.com/wallpaper/706/837/179/the-city-future-the-moon-skyscrapers-pixels-hd-wallpaper-preview.jpg'); /* Imagen de fondo steampunk */
+    background-image: url('https://c4.wallpaperflare.com/wallpaper/706/837/179/the-city-future-the-moon-skyscrapers-pixels-hd-wallpaper-preview.jpg');
     background-size: cover;
 }
+
 
 #player {
     position: absolute;
