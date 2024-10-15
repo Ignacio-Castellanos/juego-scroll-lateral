@@ -89,14 +89,17 @@ function checkCollision() {
     });
 }
 
-
+// Función para actualizar el puntaje en la pantalla
+function updateScore() {
+    scoreDisplay.textContent = Puntos: ${score};
+}
 
 // Función para generar un nuevo enemigo
 function spawnEnemy() {
     let enemy = document.createElement('div'); // Crea un nuevo elemento de enemigo
     enemy.className = 'enemy'; // Asigna la clase de estilo al enemigo
-    enemy.style.top = `${Math.random() * (window.innerHeight - 80)}px`; // Posición vertical aleatoria
-    enemy.style.left = `${window.innerWidth}px`; // Posición horizontal inicial (fuera de la pantalla)
+    enemy.style.top = ${Math.random() * (window.innerHeight - 80)}px; // Posición vertical aleatoria
+    enemy.style.left = ${window.innerWidth}px; // Posición horizontal inicial (fuera de la pantalla)
     document.getElementById('game-container').appendChild(enemy); // Agrega el enemigo al contenedor del juego
 
     enemies.push(enemy); // Agrega el enemigo al arreglo de enemigos
@@ -175,6 +178,5 @@ restartButton.addEventListener('click', restartGame);
 // Añade un escuchador de eventos al botón de inicio
 startButton.addEventListener('click', () => {
     startGame(); // Inicia el juego cuando se hace clic en el botón de inicio
-}); 
-
+});
 
