@@ -13,8 +13,8 @@ let enemySpeed = 3; // Velocidad inicial de los enemigos
 let enemies = []; // Arreglo para almacenar los enemigos
 let gameOver = false; // Bandera para indicar si el juego ha terminado
 let spawnInterval = 2000; // Intervalo inicial para la aparición de enemigos (en milisegundos)
-let speedIncreaseRate = 0.02; // Incremento lento de la velocidad de los enemigos
-let speedIncreaseInterval = 70000; // Intervalo en milisegundos para aumentar la velocidad de los enemigos
+let speedIncreaseRate = 0.03; // Incremento lento de la velocidad de los enemigos
+let speedIncreaseInterval = 60000; // Intervalo en milisegundos para aumentar la velocidad de los enemigos
 
 // Elemento de audio para la música de fondo
 let backgroundMusic = document.getElementById('background-music');
