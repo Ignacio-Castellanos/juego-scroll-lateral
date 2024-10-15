@@ -33,7 +33,6 @@ body, html {
      
 }
 
-
 #score {
     position: absolute;
     top: 10px;
@@ -72,7 +71,7 @@ body, html {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: #008CBA; /* Color azul para el botón de inicio */
+    background-color: #008CBA; 
     border: none;
     color: white;
     padding: 15px 32px;
@@ -84,5 +83,5 @@ body, html {
 }
 
 #start-game:hover {
-    background-color: #005f6b; /* Color azul más oscuro al pasar el ratón */
+    background-color: #005f6b; 
 }
