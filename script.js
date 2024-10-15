@@ -5,10 +5,9 @@ let gameOverScreen = document.getElementById('game-over'); // Pantalla de Game O
 let restartButton = document.getElementById('restart'); // Botón para reiniciar el juego
 let startButton = document.getElementById('start-game'); // Botón para iniciar el juego
 
+let containerWidth = gameContainer.clientWidth;
+enemy.style.left = `${containerWidth}px`; // Fuera del contenedor, no de la ventana
 
-let gameContainer = document.getElementById('game-container');
-let containerHeight = gameContainer.clientHeight;
-enemy.style.top = `${Math.random() * (containerHeight - 80)}px`;
 
 
 
