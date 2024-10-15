@@ -89,10 +89,7 @@ function checkCollision() {
     });
 }
 
-// Función para actualizar el puntaje en la pantalla
-function updateScore() {
-    scoreDisplay.textContent = Puntos: ${score};
-}
+
 
 // Función para generar un nuevo enemigo
 function spawnEnemy() {
