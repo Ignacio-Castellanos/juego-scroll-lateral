@@ -90,8 +90,9 @@ function checkCollision() {
 
 
 function updateScore() {
-    scoreDisplay.textContent = Puntos: ${score};
+    scoreDisplay.textContent = `Puntos: ${score}`; // Corregido con comillas invertidas
 }
+
 
 
 function spawnEnemy() {
