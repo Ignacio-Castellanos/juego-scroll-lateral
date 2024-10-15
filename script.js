@@ -180,9 +180,4 @@ startButton.addEventListener('click', () => {
     startGame(); // Inicia el juego cuando se hace clic en el botón de inicio
 }); 
 
-document.addEventListener('DOMContentLoaded', () => {
-    const startButton = document.getElementById('startButton');
-    startButton.addEventListener('click', () => {
-        startGame(); // Inicia el juego cuando se hace clic en el botón de inicio
-    });
-});
+
