@@ -167,4 +167,27 @@ function restartGame() {
     document.querySelectorAll('.enemy').forEach(e => e.remove()); // Elimina todos los enemigos de la pantalla
     enemies = []; // Restablece el arreglo de enemigos
     enemySpeed = 2; // Restablece la velocidad inicial de los enemigos
+    spawnInterval = 2000; // Restablece el intervalo de aparición de enemigos
+    startSpawningEnemies(); // Vuelve a iniciar la aparición de enemigos
+}
 
+// Función para iniciar la aparición de enemigos
+function startSpawningEnemies() {
+    setInterval(() => {
+        if (!gameOver) {
+            spawnEnemy(); // Llama a la función para generar un nuevo enemigo
+        }
+    }, spawnInterval); // Intervalo de tiempo para generar enemigos
+}
+
+// Función para aumentar la velocidad de los enemigos
+function increaseEnemySpeed() {
+    enemySpeed += speedIncreaseRate; // Aumenta la velocidad de los enemigos
+}
+
+// Configura el reinicio del juego al presionar el botón
+restartButton.addEventListener('click', restartGame);
+startButton.addEventListener('click', startGame);
+
+// Aumenta la velocidad de los enemigos a intervalos regulares
+setInterval(increaseEnemySpeed, speedIncreaseInterval); // Aumenta la velocidad cada 60 segundos
