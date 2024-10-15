@@ -52,28 +52,27 @@ function startGame() {
 
 // Función para mover al jugador
 function movePlayer(x, y) {
-    let newLeft = player.offsetLeft + x; // Nueva posición horizontal
-    let newTop = player.offsetTop + y; // Nueva posición vertical
+    let newLeft = player.offsetLeft + x; 
+    let newTop = player.offsetTop + y; 
 
-    // Limita el movimiento del jugador dentro de la ventana del juego
+    
     newLeft = Math.max(0, Math.min(window.innerWidth - player.clientWidth, newLeft));
     newTop = Math.max(0, Math.min(window.innerHeight - player.clientHeight, newTop));
 
-    player.style.left = newLeft + 'px'; // Actualiza la posición horizontal
-    player.style.top = newTop + 'px'; // Actualiza la posición vertical
-
-    // Verifica si el jugador ha colisionado con algún enemigo
+    player.style.left = newLeft + 'px'; 
+    player.style.top = newTop + 'px'; 
+    
     checkCollision();
 }
 
-// Función para verificar colisiones entre el jugador y los enemigos
+
 function checkCollision() {
-    let playerRect = player.getBoundingClientRect(); // Rectángulo que rodea al jugador
+    let playerRect = player.getBoundingClientRect(); 
 
     enemies.forEach((enemy, index) => {
-        let enemyRect = enemy.getBoundingClientRect(); // Rectángulo que rodea al enemigo
+        let enemyRect = enemy.getBoundingClientRect(); 
 
-        // Verifica si el rectángulo del jugador se superpone con el rectángulo del enemigo
+        
         if (
             playerRect.right >= enemyRect.left &&
             playerRect.left <= enemyRect.right &&
@@ -96,27 +95,27 @@ function updateScore() {
 
 
 function spawnEnemy() {
-    let enemy = document.createElement('div'); // Crea un nuevo elemento de enemigo
-    enemy.className = 'enemy'; // Asigna la clase de estilo al enemigo
-    enemy.style.top = ${Math.random() * (window.innerHeight - 80)}px; // Posición vertical aleatoria
-    enemy.style.left = ${window.innerWidth}px; // Posición horizontal inicial (fuera de la pantalla)
-    document.getElementById('game-container').appendChild(enemy); // Agrega el enemigo al contenedor del juego
+    let enemy = document.createElement('div'); 
+    enemy.className = 'enemy'; 
+    enemy.style.top = ${Math.random() * (window.innerHeight - 80)}px; 
+    enemy.style.left = ${window.innerWidth}px; 
+    document.getElementById('game-container').appendChild(enemy);
 
-    enemies.push(enemy); // Agrega el enemigo al arreglo de enemigos
-    moveEnemy(enemy); // Comienza a mover el enemigo
+    enemies.push(enemy); 
+    moveEnemy(enemy); 
 }
 
-// Función para mover un enemigo
+
 function moveEnemy(enemy) {
     let enemyInterval = setInterval(() => {
         if (gameOver) {
-            clearInterval(enemyInterval); // Detiene el movimiento del enemigo si el juego ha terminado
+            clearInterval(enemyInterval); 
             return;
         }
 
-        let enemyPosition = enemy.offsetLeft; // Posición horizontal del enemigo
+        let enemyPosition = enemy.offsetLeft; 
         if (enemyPosition < -50) {
-            // Si el enemigo sale de la pantalla, el jugador pierde
+            
             clearInterval(enemyInterval); // Detiene el intervalo de movimiento del enemigo
             triggerGameOver(); // Llama a la función de fin de juego
         } else {
@@ -161,22 +160,22 @@ function startSpawningEnemies() {
             return;
         }
 
-        spawnEnemy(); // Genera un nuevo enemigo
+        spawnEnemy(); 
     }, spawnInterval);
 
-    // Incrementa la velocidad de los enemigos a intervalos regulares
+    
     setInterval(() => {
         if (!gameOver) {
-            enemySpeed += speedIncreaseRate; // Aumenta la velocidad de los enemigos
+            enemySpeed += speedIncreaseRate; 
         }
     }, speedIncreaseInterval);
 }
 
-// Añade un escuchador de eventos al botón de reinicio
+
 restartButton.addEventListener('click', restartGame);
 
-// Añade un escuchador de eventos al botón de inicio
+
 startButton.addEventListener('click', () => {
-    startGame(); // Inicia el juego cuando se hace clic en el botón de inicio
+    startGame(); 
 });
 
