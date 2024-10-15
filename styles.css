@@ -33,13 +33,6 @@ body, html {
      
 }
 
-#score {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    color: #fff;
-    font-size: 20px;
-}
 
 #game-over {
     display: none;
