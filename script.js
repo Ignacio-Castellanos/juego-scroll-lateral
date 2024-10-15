@@ -80,21 +80,21 @@ function checkCollision() {
             playerRect.bottom >= enemyRect.top &&
             playerRect.top <= enemyRect.bottom
         ) {
-            // Si hay colisión, elimina al enemigo y actualiza el puntaje
+            
             enemy.remove();
-            enemies.splice(index, 1); // Elimina el enemigo del arreglo
-            score += 10; // Incrementa el puntaje
-            updateScore(); // Actualiza la visualización del puntaje
+            enemies.splice(index, 1); 
+            score += 10; 
+            updateScore(); 
         }
     });
 }
 
-// Función para actualizar el puntaje en la pantalla
+
 function updateScore() {
     scoreDisplay.textContent = Puntos: ${score};
 }
 
-// Función para generar un nuevo enemigo
+
 function spawnEnemy() {
     let enemy = document.createElement('div'); // Crea un nuevo elemento de enemigo
     enemy.className = 'enemy'; // Asigna la clase de estilo al enemigo
