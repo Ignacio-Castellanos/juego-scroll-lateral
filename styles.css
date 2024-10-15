@@ -30,7 +30,8 @@ body, html {
     height: 50px;
     position: absolute;
     background-image: url('http://ngplus.net/uploads/monthly_2019_04/brobot_anm.gif.e16ff7b1e488804b8144e488394e4c60.gif.12768e6a08f19449f0c3a3c3ca33cafc.gif'); /* Imagen del enemigo */
-    
+    background-size: cover;
+   
 }
 
 
